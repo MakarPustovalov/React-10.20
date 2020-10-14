@@ -2,36 +2,35 @@ import React from 'react';
 import './header.css';
 import logo from '../../logo.svg';
 
-const Header = () => (
-    <header class="header">
+const Header = (props) => (
+    <header className="header">
     <img
         src={logo}
         alt="Logo Space X"
-        class="logo"
+        className="logo"
     />
-    <nav class="main-nav nav">
-      <ul class="list">
-        <li class="item">
-          <a href="#" class="item-link">Falcon 1</a>
-        </li>
-        <li class="item">
-          <a href="#" class="item-link">Falcon 9</a>
-        </li>
-        <li class="item">
-          <a href="#" class="item-link">Falcon Heavy</a>
-        </li>
-        <li class="item">
-          <a href="#" class="item-link">Updates</a>
-        </li>
+    <nav className="main-nav nav">
+      <ul className="list">
+        {props.rockets.map((item, i) => (
+          <li key={i} className="item">
+            <a href="/"
+            onClick={e => {
+              e.preventDefault();
+              props.changeRocket(item);
+            }}
+            className="item-link"
+            >{item}</a>
+          </li>
+        ))}
       </ul>
     </nav>
-    <nav class="secondary-nav">
-      <ul class="list">
-        <li class="item">
-          <a href="#" class="item-link">Home</a>
+    <nav className="secondary-nav">
+      <ul className="list">
+        <li className="item">
+          <a href="/" className="item-link">Home</a>
         </li>
-        <li class="item">
-          <a href="calendar.html" class="item-link">Calendar</a>
+        <li className="item">
+          <a href="calendar.html" className="item-link">Calendar</a>
         </li>
       </ul>
     </nav>
